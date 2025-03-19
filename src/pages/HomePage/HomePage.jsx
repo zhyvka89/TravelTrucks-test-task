@@ -6,7 +6,7 @@ function HomePage() {
       sx={{
         height: "100vh",
         width: "100vw",
-        backgroundImage: "url('../../assets/homepage.png')",
+        backgroundImage: "url('src/assets/homepage.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",

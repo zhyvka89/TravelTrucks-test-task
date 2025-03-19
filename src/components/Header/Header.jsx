@@ -3,10 +3,10 @@ import Navigation from "../Navigation/Navigation"
 
 function Header() {
   return (
-    <div>
+    <header>
       <p>TravelTrucks</p>
       <Navigation />
-    </div>
+    </header>
   )
 }
 
