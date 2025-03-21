@@ -32,6 +32,7 @@ const camperSlice = createSlice({
     });
     builder.addCase(fetchCamperDetails.fulfilled, (state, action) => {
       state.selectedCamper = action.payload;
+      console.log(action.payload);
       state.status = 'succeeded';
     });
     builder.addCase(fetchCamperDetails.rejected, (state, action) => {

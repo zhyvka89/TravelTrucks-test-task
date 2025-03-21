@@ -18,7 +18,7 @@ function TrucksList() {
   return (
     <>
       {campers.map((camper) => (
-        <Card sx={{ minWidth: 888, display: "flex", padding: "24px" }}>
+        <Card sx={{ minWidth: 888, display: "flex", padding: "24px" }} key={camper.id}>
           <Box sx={{ width: 292 }}>
             <CardMedia
               component="img"
@@ -28,38 +28,37 @@ function TrucksList() {
             />
           </Box>
           <Box sx={{width: 596}}>
-          <CardContent>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography sx={{ color: " #101828", fontSize: 24, fontWeight: 600 }}>
-                {camper.name}
-              </Typography>
-              <Box sx={{ display: "flex" }}>
-                <Typography sx={{  color: " #101828", fontSize: 24, fontWeight: 600 }}>
-                  {camper.price}
+            <CardContent>
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography sx={{ color: " #101828", fontSize: 24, fontWeight: 600 }}>
+                  {camper.name}
                 </Typography>
-                <IconButton>
-                  <FavoriteBorderOutlinedIcon/>
-                </IconButton>
-    
+                <Box sx={{ display: "flex" }}>
+                  <Typography sx={{  color: " #101828", fontSize: 24, fontWeight: 600 }}>
+                    {camper.price}
+                  </Typography>
+                  <IconButton>
+                    <FavoriteBorderOutlinedIcon/>
+                  </IconButton>
+                </Box>
               </Box>
-            </Box>
-            <Box sx={{ display: "flex" }}>
-              <Typography sx={{ color: "text.secondary", fontSize: 16 }}>
-                {camper.rating}
-              </Typography>
-              <Typography sx={{ color: "text.secondary", fontSize: 16 }}>
-                {camper.location}
-              </Typography>
-            </Box>
-            <Box>
-              <Typography sx={{ color: "text.secondary", fontSize: 14 }}>
-                {camper.description}
-              </Typography>
-            </Box>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Show more</Button>
-          </CardActions>
+              <Box sx={{ display: "flex" }}>
+                <Typography sx={{ color: "text.secondary", fontSize: 16 }}>
+                  {camper.rating}
+                </Typography>
+                <Typography sx={{ color: "text.secondary", fontSize: 16 }}>
+                  {camper.location}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography sx={{ color: "text.secondary", fontSize: 14 }}>
+                  {camper.description}
+                </Typography>
+              </Box>
+            </CardContent>
+            <CardActions>
+              <Button size="small" href={`catalog/${camper.id}`}>Show more</Button>
+            </CardActions>
           </Box>
         </Card>
       ))}
