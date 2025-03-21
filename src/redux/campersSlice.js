@@ -50,4 +50,9 @@ export const selectError = (state) => state.campers.error;
 
 export const selectSelectedCamper = (state) => state.campers.selectedCamper;
 
+export const selectFeatures = createSelector( selectSelectedCamper, (selectedCamper) => {
+  const features = Object.entries(selectedCamper).filter(([key, value]) => typeof(value) === 'boolean');
+  return features;
+});
+
 export const campersReducer = camperSlice.reducer;
