@@ -1,5 +1,6 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { fetchCampers, fetchCamperDetails } from "./campersOps";
+import { selectFilters } from "./filterSlice";
 
 const camperSlice = createSlice({
   name: 'campers',
@@ -9,11 +10,6 @@ const camperSlice = createSlice({
     error: null,
     selectedCamper: null
   },
-  // reducers: {
-  //   selectCamper: (state, action) => {
-  //     state.selectedCamper = action.payload;
-  //   }
-  // },
   extraReducers: (builder) => {
     builder.addCase(fetchCampers.pending, (state) => {
       state.status = 'loading';
@@ -54,5 +50,22 @@ export const selectFeatures = createSelector( selectSelectedCamper, (selectedCam
   const features = Object.entries(selectedCamper).filter(([key, value]) => typeof(value) === 'boolean');
   return features;
 });
+
+export const selectFilteredCampers = createSelector(
+  [selectCampers, selectFilters],
+  (campers, filters) => {
+    const { location, equipment, vehicleType } = filters;
+    console.log(filters)
+    const result = campers.filter((camper) => {
+      const features = Object.entries(camper).filter(([key, value]) => typeof(value) === 'boolean');
+      const matchesLocation = location ? camper.location.toLowerCase().includes(location.toLowerCase()) : true;
+      const matchesEquipment = equipment.length ? equipment.every((eq) => features.some(([key, value]) => key === eq && value === true)) : true;
+      const matchesVehicleType = vehicleType.length ? vehicleType.includes(camper.form) : true;
+      return matchesLocation && matchesEquipment && matchesVehicleType;
+    });
+    console.log(result);
+    return result;
+  }
+);
 
 export const campersReducer = camperSlice.reducer;
