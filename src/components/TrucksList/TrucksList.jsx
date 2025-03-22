@@ -9,11 +9,19 @@ import {
   IconButton,
 } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { useSelector } from "react-redux";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useSelector, useDispatch } from "react-redux";
 import { selectFilteredCampers } from "../../redux/campersSlice";
+import { selectFavorites, toggleFavorite } from "../../redux/favoriteSlice";
 
 function TrucksList() {
+  const dispatch = useDispatch();
   const campers = useSelector(selectFilteredCampers);
+  const favorites = useSelector(selectFavorites);
+
+  const handleToggleFavorite = (camperId) => {
+    dispatch(toggleFavorite(camperId));
+  };
 
   return (
     <>
@@ -45,8 +53,12 @@ function TrucksList() {
                     >
                       {camper.price}
                     </Typography>
-                    <IconButton>
-                      <FavoriteBorderOutlinedIcon />
+                    <IconButton onClick={() => handleToggleFavorite(camper.id)}>
+                      {favorites.includes(camper.id) ? (
+                          <FavoriteIcon  sx={{ color: "red" }} />
+                        ) : (
+                          <FavoriteBorderOutlinedIcon />
+                        )}
                     </IconButton>
                   </Box>
                 </Box>
