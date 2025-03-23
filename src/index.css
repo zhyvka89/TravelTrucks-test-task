@@ -73,3 +73,8 @@ button:focus-visible {
   height: 100%;
   object-fit: cover;
 } */
+
+body {
+  margin: 0;
+  display: block;
+}
