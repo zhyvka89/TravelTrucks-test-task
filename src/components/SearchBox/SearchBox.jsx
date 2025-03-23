@@ -8,6 +8,7 @@ import {
   ToggleButtonGroup,
   InputLabel,
   Typography,
+  Input
 } from "@mui/material";
 import AirOutlinedIcon from "@mui/icons-material/AirOutlined";
 import LocalCafeOutlinedIcon from "@mui/icons-material/LocalCafeOutlined";
@@ -17,6 +18,9 @@ import HubOutlinedIcon from "@mui/icons-material/HubOutlined";
 import ViewQuiltOutlinedIcon from "@mui/icons-material/ViewQuiltOutlined";
 import ViewWeekOutlinedIcon from "@mui/icons-material/ViewWeekOutlined";
 import ViewModuleOutlinedIcon from "@mui/icons-material/ViewModuleOutlined";
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import InputAdornment from '@mui/material/InputAdornment';
+import Divider from '@mui/material/Divider';
 import { setFilters } from "../../redux/filterSlice";
 
 function SearchBox() {
@@ -52,18 +56,24 @@ function SearchBox() {
       <InputLabel shrink htmlFor="location">
         Location
       </InputLabel>
-      <TextField
+      <Input
         id="location"
-        variant="outlined"
         value={location}
         onChange={handleLocationChange}
+        placeholder="City"
+        disableUnderline={true}
+        sx={{width: '360px', marginTop: '8px', paddingLeft: '20px'}}
+        startAdornment = {
+          <InputAdornment position="start">
+            <MapOutlinedIcon />
+          </InputAdornment>
+        }
       />
-      <Box>
-        <Typography>Filters</Typography>
-        <Typography>Vehicle Equipment</Typography>
-        <hr />
+      <Box sx={{marginTop: '40px', marginBottom: '40px'}}>
+        <Typography sx={{color: 'text.secondary', marginBottom: '32px'}}>Filters</Typography>
+        <Typography sx={{fontWeight: 600, fontSize: 20, lineHeight: 1.2, marginBottom: '24px'}}>Vehicle Equipment</Typography>
+        <Divider color='devider' sx={{marginBottom: '24px'}}/>
         <ToggleButtonGroup
-          color="primary"
           value={equipment}
           onChange={handleEquipmentChange}
           multiple
@@ -71,45 +81,51 @@ function SearchBox() {
             display: "flex",
             flexWrap: "wrap",
             gap: 1,
+            marginBottom: '24px'
           }}
         >
-          <ToggleButton value="AC">
+          <ToggleButton value="AC" sx={{ color: 'text.primary'}}>
             <AirOutlinedIcon />
             AC
           </ToggleButton>
-          <ToggleButton value="transmission">
+          <ToggleButton value="transmission" sx={{ color: 'text.primary'}}>
             <HubOutlinedIcon />
             Automatic
           </ToggleButton>
-          <ToggleButton value="kitchen">
+          <ToggleButton value="kitchen" sx={{ color: 'text.primary'}}>
             <LocalCafeOutlinedIcon />
             Kitchen
           </ToggleButton>
-          <ToggleButton value="TV">
+          <ToggleButton value="TV" sx={{ color: 'text.primary'}}>
             <TvOutlinedIcon />
             TV
           </ToggleButton>
-          <ToggleButton value="bathroom">
+          <ToggleButton value="bathroom" sx={{ color: 'text.primary'}}>
             <ShowerOutlinedIcon />
             Bathroom
           </ToggleButton>
         </ToggleButtonGroup>
-        <Typography>Vehicle type</Typography>
-        <hr />
+        <Typography sx={{fontWeight: 600, fontSize: 20, lineHeight: 1.2, marginBottom: '24px'}}>Vehicle type</Typography>
+        <Divider color='devider' sx={{marginBottom: '24px'}} />
         <ToggleButtonGroup
-          color="primary"
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 1,
+            marginBottom: '24px'
+          }}
           value={vehicleType}
           onChange={handleVehicleTypeChange}
         >
-          <ToggleButton value="panelTruck">
+          <ToggleButton value="panelTruck" sx={{ color: 'text.primary'}}>
             <ViewQuiltOutlinedIcon />
             Van
           </ToggleButton>
-          <ToggleButton value="fullyIntegrated">
+          <ToggleButton value="fullyIntegrated" sx={{ color: 'text.primary'}}>
             <ViewModuleOutlinedIcon />
             Fully integrated
           </ToggleButton>
-          <ToggleButton value="alcove">
+          <ToggleButton value="alcove" sx={{ color: 'text.primary'}}>
             <ViewWeekOutlinedIcon />
             Alcove
           </ToggleButton>
