@@ -18,11 +18,11 @@ function CatalogPage() {
 
   return (
     <Container maxWidth="lg">
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{paddingTop: '48px'}}>
         <Grid size={5}>
           <SearchBox />
         </Grid>
-        <Grid size={7}>
+        <Grid container size={7} spacing={2}>
           <TrucksList />
         </Grid>
       </Grid>
