@@ -1,27 +1,41 @@
-import { NavLink } from "react-router-dom";
-import { nav, link, activeLink } from "./Navigation.module.css";
+import { NavLink, useLocation } from "react-router-dom";
+import { Tabs, Tab } from "@mui/material";
 
 function Navigation() {
+  const location = useLocation();
   return (
-    <nav className={nav}>
-      <NavLink
+    <Tabs
+      value={location.pathname}
+      textColor="primary"
+      component="nav"
+      sx={{
+        "& .MuiTabs-indicator": { display: "none" },
+      }}
+    >
+      <Tab
+        label="Home"
+        component={NavLink}
         to="/"
-        className={({ isActive }) =>
-          `${link} ` + (isActive ? `${activeLink}` : "")
-        }
-      >
-        Home
-      </NavLink>
-      <NavLink
+        value="/"
+        sx={{
+          textTransform: "none",
+          fontWeight: "bold",
+          "&.active": { color: "#E44848" },
+        }}
+      />
+      <Tab
+        label="Catalog"
+        component={NavLink}
         to="/catalog"
-        className={({ isActive }) =>
-          `${link} ` + (isActive ? `${activeLink}` : "")
-        }
-      >
-        Catalog
-      </NavLink>
-    </nav>
-  )
+        value="/catalog"
+        sx={{
+          textTransform: "none",
+          fontWeight: "bold",
+          "&.active": { color: "#E44848" },
+        }}
+      />
+    </Tabs>
+  );
 }
 
-export default Navigation
+export default Navigation;

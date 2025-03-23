@@ -77,7 +77,7 @@ function TrucksList() {
                 </Box>
               </CardContent>
               <CardActions>
-                <Button size="small" href={`catalog/${camper.id}`}>
+                <Button variant="contained" href={`catalog/${camper.id}`}>
                   Show more
                 </Button>
               </CardActions>
