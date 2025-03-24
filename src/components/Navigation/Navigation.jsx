@@ -18,8 +18,10 @@ function Navigation() {
         to="/"
         value="/"
         sx={{
+          color: "text.primary",
           textTransform: "none",
           fontWeight: "bold",
+          fontSize: 16,
           "&.active": { color: "#E44848" },
         }}
       />
@@ -29,8 +31,10 @@ function Navigation() {
         to="/catalog"
         value="/catalog"
         sx={{
+          color: "text.primary",
           textTransform: "none",
           fontWeight: "bold",
+          fontSize: 16,
           "&.active": { color: "#E44848" },
         }}
       />
