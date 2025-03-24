@@ -7,20 +7,19 @@ function Reviews() {
   const reviews = camper.reviews;
 
   return (
-    <Box sx={{ mt: 2 }}>
-    <Typography variant="h6" sx={{ mb: 1 }}>Customer Reviews:</Typography>
-    {reviews.map((review, index) => (
-      <Box key={index} sx={{ p: 2, borderBottom: "1px solid #ddd" }}>
-        <Typography variant="subtitle1" fontWeight="bold">
-          {review.reviewer_name}
-        </Typography>
-        <Rating value={review.reviewer_rating} precision={0.5} readOnly />
-        <Typography sx={{ mt: 1, fontStyle: "italic" }}>
-          "{review.comment}"
-        </Typography>
-      </Box>
-    ))}
-  </Box>
+    <Box sx={{width: '630px', display: 'flex', flexDirection: 'column', gap: '44px'}}>
+      {reviews.map((review, index) => (
+        <Box key={index} sx={{}}>
+          <Typography variant="subtitle1" fontWeight="bold">
+            {review.reviewer_name}
+          </Typography>
+          <Rating value={review.reviewer_rating} precision={0.5} readOnly />
+          <Typography sx={{ }}>
+            {review.comment}
+          </Typography>
+        </Box>
+      ))}
+    </Box>
   )
 }
 

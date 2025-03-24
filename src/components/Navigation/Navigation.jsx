@@ -3,9 +3,16 @@ import { Tabs, Tab } from "@mui/material";
 
 function Navigation() {
   const location = useLocation();
+
+  const getTabValue = () => {
+    if (location.pathname === "/") return "/";
+    if (location.pathname.startsWith("/catalog")) return "/catalog";
+    return false;
+  };
+  
   return (
     <Tabs
-      value={location.pathname}
+      value={getTabValue()}
       textColor="primary"
       component="nav"
       sx={{
