@@ -62,7 +62,7 @@ function SearchBox() {
         onChange={handleLocationChange}
         placeholder="City"
         disableUnderline={true}
-        sx={{width: '360px', marginTop: '8px', paddingLeft: '20px'}}
+        sx={{maxWidth: '360px', width: '360px', marginTop: '8px', paddingLeft: '20px'}}
         startAdornment = {
           <InputAdornment position="start">
             <MapOutlinedIcon />
