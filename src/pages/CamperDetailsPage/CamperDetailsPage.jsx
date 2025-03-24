@@ -39,7 +39,7 @@ function CamperDetailsPage() {
       {camper && (
         <Box sx={{ paddingTop: "48px" }}>
           <TruckDetails camper={camper} />
-          <Box sx={{display: 'flex', marginTop: "60px" }}>
+          <Box sx={{display: 'flex', alignItems: 'center', gap: '40px', marginTop: "60px" }}>
             <Box sx={{ width: "100%"}}>
               <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -76,7 +76,8 @@ function CamperDetailsPage() {
                 </TabPanel>
               </TabContext>
             </Box>
-            <BookForm/>
+            {/* Not finished :( */}
+            {/* <BookForm/> */}
           </Box>
         </Box>
       )}

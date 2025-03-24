@@ -3,6 +3,7 @@ import './App.module.css'
 import { Routes, Route } from 'react-router-dom'
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from '@emotion/react'
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Header = lazy(() => import('./components/Header/Header'))
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
@@ -59,7 +60,11 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '100px',
-          padding: '16px 60px'
+          padding: '16px 40px',
+          fontSize: '16px',
+          '&:hover': {
+            backgroundColor: '#D84343'
+          }
         }
       }
     },
@@ -97,7 +102,7 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Inter, sans-serif',
     fontSize: 14,
-    fontWeightBold: 500,
+    fontWeight: 500,
     lineHeight: 1.5,
     button: {textTransform: 'none'}
   },
@@ -110,7 +115,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header />
 
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<CircularProgress color='primary'/>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />

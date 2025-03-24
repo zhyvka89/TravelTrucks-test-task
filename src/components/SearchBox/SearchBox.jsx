@@ -48,7 +48,6 @@ function SearchBox() {
       vehicleType,
     };
     dispatch(setFilters(formData));
-    console.log("Collected Data:", formData);
   }
 
   return (

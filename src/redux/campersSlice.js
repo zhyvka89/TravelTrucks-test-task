@@ -8,15 +8,18 @@ const camperSlice = createSlice({
     list: [],
     status: 'idle',
     error: null,
-    selectedCamper: null
+    selectedCamper: null,
+    hasMore: true
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCampers.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(fetchCampers.fulfilled, (state, action) => {
+      if (action.payload.length < 4) {
+        state.hasMore = false; 
+      }
       state.list = action.payload.items;
-      console.log(action.payload);
       state.status = 'succeeded';
     });
     builder.addCase(fetchCampers.rejected, (state, action) => {
@@ -28,7 +31,6 @@ const camperSlice = createSlice({
     });
     builder.addCase(fetchCamperDetails.fulfilled, (state, action) => {
       state.selectedCamper = action.payload;
-      console.log(action.payload);
       state.status = 'succeeded';
     });
     builder.addCase(fetchCamperDetails.rejected, (state, action) => {
@@ -45,6 +47,8 @@ export const selectStatus = (state) => state.campers.status;
 export const selectError = (state) => state.campers.error;
 
 export const selectSelectedCamper = (state) => state.campers.selectedCamper;
+
+export const selectHasMore = (state) => state.campers.hasMore;
 
 export const selectFeatures = createSelector( selectSelectedCamper, (selectedCamper) => {
   const features = Object.entries(selectedCamper).filter(([key, value]) => typeof(value) === 'boolean');
