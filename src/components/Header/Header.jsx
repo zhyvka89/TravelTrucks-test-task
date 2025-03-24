@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Container, Box } from "@mui/material";
 import Navigation from "../Navigation/Navigation";
+import logo from '../../assets/icons/TravelTrucks.svg'
 
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             component="img"
-            src="src\assets\icons\TravelTrucks.svg"
+            src={`${logo}`}
             alt="TravelTrucks Logo"
             sx={{ width: 136, height: 15 }}
           />
