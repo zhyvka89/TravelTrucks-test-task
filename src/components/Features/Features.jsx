@@ -1,51 +1,98 @@
-import { Card, List, ListItem, Typography } from "@mui/material"
+import { Card, List, ListItem, Typography, Divider } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { useSelector } from "react-redux";
-import { selectFeatures } from "../../redux/campersSlice";
 
-function Features({camper}) {
-  const features = useSelector(selectFeatures);
-
+function Features({ camper }) {
 
   return (
-    <Card sx={{padding: 2, width: 630}}>
-      <List sx={{display: 'flex', width:'100%'}}>
-        {features.map(([key, value]) => (
-          <ListItem sx={{justifyContent: 'center', width: 'unset'}} key={key}>
-            <Typography>{key}</Typography>
-          </ListItem>
-        ))}
+    <Card
+      sx={{
+        padding: "44px 52px",
+        width: 524,
+        backgroundColor: "background.inputs",
+        borderRadius: "10px",
+      }}
+    >
+      <List
+        sx={{
+          display: "flex",
+          gap: "8px",
+          flexWrap: "wrap",
+          width: "100%",
+          marginBottom: "100px",
+        }}
+      >
+        {Object.entries(camper)
+          .filter(
+            ([key, value]) => typeof value === "boolean" && value === true
+          )
+          .map(([key, value]) => (
+            <ListItem
+              sx={{
+                justifyContent: "center",
+                width: "unset",
+                backgroundColor: "background.default",
+                borderRadius: "100px",
+              }}
+              key={key}
+            >
+              <Typography sx={{ textTransform: "capitalize" }}>
+                {key}
+              </Typography>
+            </ListItem>
+          ))}
       </List>
-      <Typography>Vehicle Details</Typography>
-      <hr />
+      <Typography sx={{ fontSize: 20, marginBottom: "24px", fontWeight: 600 }}>
+        Vehicle Details
+      </Typography>
+      <Divider color="devider" sx={{ marginBottom: "24px" }} />
       <Grid container spacing={2} direction="column">
-        <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid
+          xs={6}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Typography>Form</Typography>
-          <Typography>{camper.form}</Typography>
+          <Typography sx={{ textTransform: "capitalize" }}>
+            {camper.form}
+          </Typography>
         </Grid>
-        <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid
+          xs={6}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Typography>Length</Typography>
           <Typography>{camper.length}</Typography>
         </Grid>
-        <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid
+          xs={6}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Typography>Width</Typography>
           <Typography>{camper.width}</Typography>
         </Grid>
-        <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid
+          xs={6}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Typography>Height</Typography>
           <Typography>{camper.height}</Typography>
         </Grid>
-        <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid
+          xs={6}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Typography>Tank</Typography>
           <Typography>{camper.tank}</Typography>
         </Grid>
-        <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid
+          xs={6}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Typography>Consumption</Typography>
           <Typography>{camper.consumption}</Typography>
         </Grid>
       </Grid>
     </Card>
-  )
+  );
 }
 
-export default Features
+export default Features;
